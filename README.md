@@ -1,5 +1,5 @@
 # Angry Software Development Kit
-![screenshot](data/images/pc/SPLASHES_SHEET_PC_1.png
+![screenshot](data/images/pc/SPLASHES_SHEET_PC_1.png)
 An extensive Angry Birds Mod to make the game more accessible to developers!
 ---
 ## Downloads
