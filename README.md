@@ -5,6 +5,8 @@
 An extensive Angry Birds Mod to make the game more accessible to developers!
 
 ---
+## Changes from the original repo
+for now i'm just gonna add stuff like blocks and possibly menus and other stuff in the future mmmmmmmm
 ## Downloads
 To download AngrySDK you'll need a copy of Angry Birds Seasons 3.3.0, simply replace the game's data folder and config.lua file with the ones presented here to get started.
 ## Features
