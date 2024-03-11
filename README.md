@@ -24,4 +24,5 @@ AngrySDK is (C) 2024 Hidden Birds.
 
 This is provided as a free modification for Angry Birds Seasons 3.3.0, you may redistribute or modify it how you like with credit included to the original authors and software.
 
-AngrySDK and Hidden Birds are unaffiliated with Rovio Entertainment Oyj or their products, despite this being a modification for their game's source.
+AngrySDK and Hidden Birds are unaffiliated with Rovio Entertainment Oyj or their products, regardless of this being a modification for their game's source.
+Additionally, this is not intended as a replacement for Angry Birds or any other program.
