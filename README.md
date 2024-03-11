@@ -1,6 +1,9 @@
 # Angry Software Development Kit
+
 ![screenshot](data/images/pc/SPLASHES_SHEET_PC_1.png)
+
 An extensive Angry Birds Mod to make the game more accessible to developers!
+
 ---
 ## Downloads
 To download AngrySDK you'll need a copy of Angry Birds Seasons 3.3.0, simply replace the game's data folder and config.lua file with the ones presented here to get started.
