@@ -53,6 +53,12 @@ createAudio({
   volume = 1
 })
 createAudio({
+  fileName = "/music/title_theme",
+  stream = true,
+  clipName = themes.THEME_MENU_MUSIC_CLASSIC,
+  volume = 1
+})
+createAudio({
   fileName = "/sfx/bird 01 collision a2",
   clipName = "bird 01 collision a2",
   volume = 1
