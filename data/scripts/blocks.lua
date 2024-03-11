@@ -633,7 +633,7 @@ materials = {
 themes = {
   themeSpecialFriction = {{19, "0"}, {31, "0"}},
   settings = {
-    themeAmount = 32,
+    themeAmount = 33,
     firstTheme = 16	
   },
   theme1 = {
