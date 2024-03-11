@@ -9,6 +9,22 @@ r0_0.pc = {
       0
     },
     {
+        "INGAME_SKIES_1.dat",
+        0
+      },
+      {
+        "INGAME_PARALLAX_1.dat",
+        0
+      },
+      {
+        "INGAME_THEME_GROUND_1.dat",
+        0
+      },
+      {
+        "INGAME_GROUNDS_1.dat",
+        0
+      },
+    {
       "BUTTONS_SHEET_2.dat",
       0
     },
