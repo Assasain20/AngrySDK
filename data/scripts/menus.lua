@@ -1,0 +1,13 @@
+loadLuaFile(scriptPath .. "/season_selection.lua", "")
+loadLuaFile(scriptPath .. "/seasons_events.lua", "")
+loadLuaFile(scriptPath .. "/menus/seasons_layouts.lua", "")
+loadLuaFile(scriptPath .. "/menus/seasons_main_menu_particle_system.lua", "")
+loadLuaFile(scriptPath .. "/menus/seasons_main_menu.lua", "")
+loadLuaFile(scriptPath .. "/menus/seasons_episode_selection.lua", "")
+loadLuaFile(scriptPath .. "/menus/seasons_level_selection.lua", "")
+loadLuaFile(scriptPath .. "/menus/game_credits.lua", "")
+loadLuaFile(scriptPath .. "/menus/cutscene_loading.lua", "")
+loadLuaFile(scriptPath .. "/mightyEagle.lua", "")
+loadLuaFile(scriptPath .. "/mightyDragon.lua", "")
+loadLuaFile(scriptPath .. "/links.lua", "")
+filename = "menus.lua"

@@ -1,0 +1,253 @@
+filename = "Level24.lua"
+themeSprites = {
+
+}
+castleCameraData = {
+    windows = {
+        bottom = 112.691,
+        screenWidth = 1366,
+        py = -271.309,
+        screenHeight = 705,
+        top = -655.309,
+        sy = 0.917969,
+        sx = 0.917969,
+        right = 1507.65,
+        left = 19.5811,
+        px = 763.615,
+    },
+    version = "0.02",
+}
+levelParticles = {
+    y = -1752.54,
+    x = 1547.9,
+    firstFrame = true,
+    width = 5656.68,
+}
+joints = {
+
+}
+world = {
+    RedBird_3 = {
+        y = -1,
+        x = -27,
+        name = "RedBird_3",
+        startNumber = 3,
+        angle = 0,
+        definition = "RedBird",
+    },
+    LightBlock2_2 = {
+        y = -12.5,
+        x = 32.5,
+        name = "LightBlock2_2",
+        angle = 0,
+        definition = "LightBlock2",
+    },
+    WoodBlock6_3 = {
+        y = -7,
+        x = 45,
+        name = "WoodBlock6_3",
+        angle = 1.5708,
+        definition = "WoodBlock6",
+    },
+    WoodBlock3_4 = {
+        y = -22,
+        x = 42,
+        name = "WoodBlock3_4",
+        angle = 6.28317,
+        definition = "WoodBlock3",
+    },
+    Estrade02_2 = {
+        y = -1.5,
+        x = 42,
+        name = "Estrade02_2",
+        angle = 2.86102e-006,
+        definition = "Estrade02",
+    },
+    WoodBlock6_5 = {
+        y = -16,
+        x = 41.5,
+        name = "WoodBlock6_5",
+        angle = 1.5708,
+        definition = "WoodBlock6",
+    },
+    WoodBlock6_2 = {
+        y = -7,
+        x = 38,
+        name = "WoodBlock6_2",
+        angle = 1.5708,
+        definition = "WoodBlock6",
+    },
+    WoodBlock1_3 = {
+        y = -14.5,
+        x = 29.5,
+        name = "WoodBlock1_3",
+        angle = 6.28317,
+        definition = "WoodBlock1",
+    },
+    RedBird_1 = {
+        y = -1,
+        x = -20,
+        name = "RedBird_1",
+        startNumber = 1,
+        angle = 0,
+        definition = "RedBird",
+    },
+    ground = {
+        y = 5,
+        x = 11.614,
+        name = "ground",
+        angle = 0,
+        definition = "Ground",
+    },
+    WoodBlock3_3 = {
+        y = -22,
+        x = 34,
+        name = "WoodBlock3_3",
+        angle = 6.28317,
+        definition = "WoodBlock3",
+    },
+    Estrade02_1 = {
+        y = -1.5,
+        x = 34,
+        name = "Estrade02_1",
+        angle = 2.86102e-006,
+        definition = "Estrade02",
+    },
+    RedBird_2 = {
+        y = -1,
+        x = -23.5,
+        name = "RedBird_2",
+        startNumber = 2,
+        angle = 0,
+        definition = "RedBird",
+    },
+    RedBird_4 = {
+        y = -1,
+        x = -30.5,
+        name = "RedBird_4",
+        startNumber = 4,
+        angle = 0,
+        definition = "RedBird",
+    },
+    WoodBlock10_3 = {
+        y = -20.5,
+        x = 38,
+        name = "WoodBlock10_3",
+        angle = 6.28317,
+        definition = "WoodBlock10",
+    },
+    WoodBlock1_4 = {
+        y = -14.5,
+        x = 46.5,
+        name = "WoodBlock1_4",
+        angle = 6.28317,
+        definition = "WoodBlock1",
+    },
+    WoodBlock10_2 = {
+        y = -11.5,
+        x = 43,
+        name = "WoodBlock10_2",
+        angle = 6.28317,
+        definition = "WoodBlock10",
+    },
+    WoodBlock10_1 = {
+        y = -11.5,
+        x = 33,
+        name = "WoodBlock10_1",
+        angle = 6.28317,
+        definition = "WoodBlock10",
+    },
+    WoodBlock6_1 = {
+        y = -7,
+        x = 31,
+        name = "WoodBlock6_1",
+        angle = 1.5708,
+        definition = "WoodBlock6",
+    },
+    LightBlock2_1 = {
+        y = -12.5,
+        x = 43.5,
+        name = "LightBlock2_1",
+        angle = 0,
+        definition = "LightBlock2",
+    },
+    WoodBlock6_4 = {
+        y = -16,
+        x = 34.5,
+        name = "WoodBlock6_4",
+        angle = 1.5708,
+        definition = "WoodBlock6",
+    },
+    WoodBlock3_1 = {
+        y = -13,
+        x = 29.5,
+        name = "WoodBlock3_1",
+        angle = 6.28317,
+        definition = "WoodBlock3",
+    },
+    MediumPiglette_1 = {
+        y = -22.5,
+        x = 38,
+        name = "MediumPiglette_1",
+        angle = 6.28317,
+        definition = "MediumPiglette",
+    },
+    LightBlock1_1 = {
+        y = -23.5,
+        x = 42,
+        name = "LightBlock1_1",
+        angle = 0,
+        definition = "LightBlock1",
+    },
+    SmallPiglette_1 = {
+        y = -13,
+        x = 38,
+        name = "SmallPiglette_1",
+        angle = 6.28317,
+        definition = "SmallPiglette",
+    },
+    LightBlock1_2 = {
+        y = -23.5,
+        x = 34,
+        name = "LightBlock1_2",
+        angle = 0,
+        definition = "LightBlock1",
+    },
+    WoodBlock3_2 = {
+        y = -13,
+        x = 46.5,
+        name = "WoodBlock3_2",
+        angle = 6.28317,
+        definition = "WoodBlock3",
+    },
+}
+worldGravity = 20
+physicsToWorld = 20
+counts = {
+    WoodBlock3 = 4,
+    Estrade02 = 2,
+    WoodBlock10 = 3,
+    LightBlock2 = 2,
+    LightBlock1 = 2,
+    SmallPiglette = 1,
+    WoodBlock6 = 5,
+    WoodBlock1 = 4,
+    MediumPiglette = 1,
+    RedBird = 4,
+}
+theme = "theme29"
+birdCameraData = {
+    windows = {
+        bottom = 112.691,
+        screenWidth = 1366,
+        py = -234.309,
+        screenHeight = 705,
+        top = -618.309,
+        sy = 0.917969,
+        sx = 0.917969,
+        right = 1507.65,
+        left = -908.419,
+        px = -164.385,
+    },
+    version = "0.02",
+}

@@ -1,0 +1,25 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+uniform float timer;
+
+void main()
+{
+
+	vec2 uv1 = (V_Screenpos.xy *0.5) + 0.5;
+	
+	float fade = clamp(0.7-((length(V_TexCoord0 - vec2(0.5, 0.5)))/0.707),0.0,1.0);
+	vec2 uv2 = vec2( fract((V_TexCoord0.x+timer)*0.4), V_TexCoord0.y*0.4);
+	vec2 offset = texture2D(BASEMAP1,uv2).rg*0.04*fade;
+	vec4 color = texture2D(BASEMAP,uv1 + offset);
+	
+	
+	
+	//color.b*=(1+clamp(0.45 - len,0.0,1.0)*10);
+	
+	//color+=vec4(1,1,1,1)*(offset.x+offset.y)*300;
+	
+	
+	gl_FragColor = vec4(color.rgb, ceil(fade));
+}

@@ -1,0 +1,8 @@
+#version 120
+#define DISABLE_DEPTH_TEST
+#define ENABLE_ALPHA_BLENDING
+#define ENABLE_ALPHA_FACTOR
+#define ENABLE_ALPHA_MASK
+#define ENABLE_TWOSIDED
+
+#include "pp.fx"

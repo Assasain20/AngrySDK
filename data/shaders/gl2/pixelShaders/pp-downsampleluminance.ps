@@ -1,0 +1,30 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+uniform float inversewidth;
+
+const vec3 LUMINANCE_COEFFICIENTS = vec3(0.27, 0.67, 0.04);
+
+void main()
+{
+
+	vec3 acc = vec3(0.0,0.0,0.0);
+	
+	
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(0.0, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, 0.0) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, 0.0) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, -inversewidth)).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(0.0, -inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, -inversewidth) ).rgb;
+	
+	float luminance = dot(acc , LUMINANCE_COEFFICIENTS);
+	luminance *= 0.11111111111111;
+	
+	gl_FragColor =  vec4(luminance, luminance, luminance,1.0);
+
+}

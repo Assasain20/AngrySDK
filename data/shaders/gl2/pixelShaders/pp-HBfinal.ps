@@ -1,0 +1,20 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+
+void main()
+{
+	vec3 color = texture2D(BASEMAP, V_TexCoord0).rgb;
+	vec3 bloom = texture2D(NORMALMAP, V_TexCoord0).rgb;
+	float luminance = texture2D(BASEMAP1, V_TexCoord0).r;
+	
+	//do some tonemapping to prevent over brightnening (and get crazy contrast :p)
+	color = color*0.8 + 0.2 * (color/(color+luminance)); 
+	color *= color;
+	
+	
+	color += bloom*bloom;
+
+	gl_FragColor = vec4(color,1.0);
+}

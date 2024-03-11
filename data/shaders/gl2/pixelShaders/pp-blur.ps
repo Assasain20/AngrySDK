@@ -1,0 +1,13 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+#include "../commons/functions.sh"
+
+
+uniform vec4 params;
+
+void main()
+{
+	vec3 color = gaussianBlur1D(BASEMAP, V_TexCoord0, vec2(params.x*params.z,params.y*params.z));
+	gl_FragColor = vec4(color, 1.0);
+}

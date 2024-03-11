@@ -1,0 +1,49 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+uniform float timer;
+
+const vec3 sepia = vec3(0.437,0.257, 0.078);
+
+void main()
+{
+	
+	float flickerspeed = 20.0;
+
+	vec4 color = texture2D(BASEMAP, V_TexCoord0);
+	
+	//tonemap the color to sepia-like 
+	float luminance = dot(color.rgb,sepia);
+	color.rgb = luminance*vec3(0.85,0.7,0.5);
+	
+	
+	//noise
+	float noise = texture2D(BASEMAP1,vec2(V_TexCoord0.x*cos(timer*10.0), V_TexCoord0.y*sin(timer*30.0))).b;
+	color.rgb *= 0.9 + noise*0.1;
+	
+	//seams
+	float dir = sin(timer);
+	float seam = texture2D(BASEMAP1, vec2(V_TexCoord0.x+(fract(timer)*dir),0.0)).b;
+	color.rgb += clamp(seam-0.99,0.0,1.0)*1.0;
+	
+	//add flicker
+	float flicker = abs(sin(flickerspeed * timer));
+	flicker = abs(flicker) * 0.1 + 0.9;
+	
+	//add darkening of the edges
+	float centerdist = length(V_TexCoord0 - 0.5);
+	float darkening = clamp(0.8-centerdist,0.0,1.0);
+	
+   gl_FragColor.rgba = color * flicker * darkening;
+
+   
+/*
+	vec2 noise = V_TexCoord0;
+	float random = noise.x*noise.y*mod(timer,940.0);
+	noise.x += mod(random,0.01);
+	noise.y += mod(random,0.012);
+	
+	vec4 color = texture2D(BASEMAP,noise);
+	gl_FragColor = color;*/
+}

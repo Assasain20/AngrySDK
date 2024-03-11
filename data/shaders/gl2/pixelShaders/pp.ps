@@ -1,0 +1,43 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+void main()
+{
+
+#ifdef BLUR_1D
+	// Blurred texture lookup
+	// IMG: apply texcoord offsets in the vertex shader 
+	vec3 blur  = texture2D(BASEMAP, V_BlurTexCoord[0]).rgb * 0.0588235;
+	blur		   += texture2D(BASEMAP, V_BlurTexCoord[1]).rgb * 0.2352941;
+	blur		   += texture2D(BASEMAP, V_BlurTexCoord[2]).rgb * 0.4117647;
+	blur		   += texture2D(BASEMAP, V_BlurTexCoord[3]).rgb * 0.2352941;
+	blur		   += texture2D(BASEMAP, V_BlurTexCoord[4]).rgb * 0.0588235;	
+	vec4 color = vec4(blur, 1);
+		
+#else
+
+	#ifdef DISABLE_TEXTURE
+		#ifdef ENABLE_VERTEXCOLOR
+			vec4 color = V_VertexColor;
+		#else
+			vec4 color = DIFFUSEC;
+		#endif
+	#else
+		vec4 color = texture2D( BASEMAP, V_TexCoord0 );
+		#ifdef ENABLE_VERTEXCOLOR_MODULATE
+			color *= V_VertexColor;
+		#endif
+	#endif
+#endif
+
+#ifdef ENABLE_ALPHA_MASK
+	color.a *= texture2D( BASEMAP1, V_TexCoord1 ).a;
+#endif
+
+#ifdef ENABLE_ALPHA_FACTOR
+	color *= ALPHA_FACTOR;
+#endif
+
+	gl_FragColor = color;
+}

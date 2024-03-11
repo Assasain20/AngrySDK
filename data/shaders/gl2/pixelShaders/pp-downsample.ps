@@ -1,0 +1,25 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+uniform float inversewidth;
+
+void main()
+{
+	vec3 acc = vec3(0,0,0);
+	
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(0.0, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, 0.0) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, 0.0) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(-inversewidth, -inversewidth)).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(0.0, -inversewidth) ).rgb;
+	acc += texture2D(BASEMAP, V_TexCoord0 + vec2(inversewidth, -inversewidth) ).rgb;
+	
+	acc *= 0.1111111111111111111;
+	
+	gl_FragColor =  vec4(acc,1.0);
+
+}

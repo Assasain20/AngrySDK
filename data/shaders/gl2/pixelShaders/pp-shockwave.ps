@@ -1,0 +1,25 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+
+void main()
+{
+	vec2 uvs = (V_Screenpos.xy *0.5) + 0.5;
+	vec2 dir = (V_TexCoord0 - 0.5);
+
+	float len = length(dir);
+	dir = normalize(dir);
+	
+	float state = len - 0.35;
+	
+	//"opacity", this is merely 1 if we wan't to offset the pixel, 0 if we don't (with 0, the blending will ignore the color calculated here)
+	float opacity = ceil(clamp(0.05-abs(state),0.0,1.0));
+	state *= opacity;
+	
+	
+	vec2 offset = (state*dir)*0.5;
+	vec4 color = texture2D(BASEMAP,uvs + offset);
+	color.b*=(1.0+clamp(ceil(state) ,0.0,1.0)*10.0*opacity);
+	gl_FragColor = vec4(color.rgb,opacity);
+}

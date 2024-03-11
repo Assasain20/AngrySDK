@@ -1,0 +1,12 @@
+attribute	vec3	DT_POSITION;
+attribute	vec3	DT_POSITIONT;
+attribute	vec2	DT_BONEWEIGHTS;
+attribute	vec3	DT_BONEINDICES;
+attribute	vec3	DT_NORMAL;
+attribute	vec4	DT_DIFFUSE;
+attribute	vec4	DT_SPECULAR;
+attribute	vec2	DT_TEX0;
+attribute	vec2	DT_TEX1;
+attribute	vec2	DT_TEX2;
+attribute	vec2	DT_TEX3;
+attribute	vec3	DT_TANGENT;

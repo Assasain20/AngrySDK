@@ -1,0 +1,42 @@
+#include "../commons/defines.sh"
+#include "../commons/uniforms.sh"
+#include "../commons/varyings.sh"
+
+// the strength of the warping.
+const float warpStrength = 0.03;
+//increase to get more roundish effect, if 0, the warp area will be rectangle. Experiment to get the result wanted
+const float rounding = 0.3;
+
+const float PI = 3.14159265;
+
+uniform float time;
+
+void main()
+{
+
+	vec2 uvs = (V_Screenpos.xy *0.5) + 0.5;
+	vec2 dir = (V_TexCoord0 - 0.5);
+	float len = length(dir)/0.707;
+	dir = normalize(dir);
+	
+	float fade = 1.0-len;
+	/*
+	float angleMod = atan(dir.y, dir.x);
+	float angle = 15.0*PI*fade;
+	vec2 temp;
+	
+	temp.x = dir.x * cos(angle) - dir.y*sin(angle);
+	temp.y = dir.x * sin(angle) + dir.y*cos(angle);
+	
+	dir = temp;
+	
+	angleMod = 1.0+ abs(cos((angleMod+time*10.0)*PI*len))*0.3;
+	*/
+	//fade = fade-((1.0-fade)*(1.0-fade));
+	
+	fade = clamp(fade-rounding,0.0,1.0);
+	
+	vec4 color = texture2D(BASEMAP,uvs + fade*dir*warpStrength);
+	//color = vec4(1.0,1.0,1.0,1.0);
+	gl_FragColor = vec4(color.rgb, ceil(fade));
+}
