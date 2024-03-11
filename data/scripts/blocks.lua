@@ -2021,6 +2021,64 @@ themes = {
       g = 39,
       b = 72
     }
+  },
+    theme33 = {
+    index = 33,
+    music = "",
+    menuMusic = "title_classic",
+    graphicSetName = {
+      "THEME_INTEL",
+      "LS_XMAS"
+    },
+    texture = "INGAME_THEME_GROUND_1",
+    playButtonSprite = "MENU_PLAY_H",
+    logoImage = "MENU_LOGO",
+    menuTheme = "theme33",
+    bgLayers = {
+      {
+        "INGAME_SKIES_1",
+        "BACKGROUND_1_LAYER_1",
+        0.125,
+        2
+      },
+      {
+        "",
+        "BACKGROUND_1_LAYER_2",
+        0.5,
+        2
+      },
+      {
+        "",
+        "BACKGROUND_1_LAYER_3",
+        1,
+        1.5
+      }
+    },
+    fgLayers = {
+      {
+        "INGAME_GROUNDS_1",
+        "FOREGROUND_1_LAYER_1"
+      },
+      {
+        "",
+        "FOREGROUND_1_LAYER_2"
+      }
+    },
+    color = {
+      r = 148,
+      g = 206,
+      b = 222
+    },
+    groundColor = {
+      r = 10,
+      g = 19,
+      b = 57
+    },
+    staticColor = {
+      r = 0,
+      g = 39,
+      b = 72
+    }
   }
 }
 groups = {
