@@ -29,6 +29,7 @@ themes = {
   THEME_GAME_MUSIC_HALLOWEEN2012 = "atmosphere_halloween2012",
   THEME_MENU_MUSIC_HALLOWEEN2012 = "title_halloween2012",
   THEME_GAME_MUSIC_XMAS2012 = "atmosphere_xmas2012",
+  THEME_MENU_MUSIC_CLASSIC = "title_classic",
   THEME_MENU_MUSIC_XMAS2012 = "title_xmas2012"
 }
 audioData.channelVolume[1] = 1
