@@ -1,4 +1,89 @@
 gamelua.g_episodes = {
+  [16] = {
+    season = 2014,
+    icon = "ABOUT_BIRDS_1",
+    name = "Haunted Hogs",
+    decor_left = "LS_THEME_H3_LEFT",
+    decor_right = "LS_THEME_H3_RIGHT",
+    score_achievement_limit = 9999999,
+    per_page_level_numbering = true,
+    button = "EPISODE_SELECTION_HALLOWEEN",
+    background_image = "H3_SKY",
+    dynamic_load_group = "levelSelectionCherry",
+    featherBoxIdentifier = "H3",
+    reward_completion = {sprite = "REWARD_H3", type = "projectile"},
+    reward_three_stars = {
+      sprite = "REWARD_H3_STAR",
+      type = "projectile"
+    },
+    three_stars_goldenegg = {
+      level = "LevelHH_3star",
+      sprite = "REWARD_H3_STAR"
+    },
+    pages = {
+      {
+        folder_name = "/levels/sdkpack1",
+        display_number = "1",
+        world_number = 22,
+        colour = {
+          r = 0,
+          g = 0,
+          b = 0
+        },
+        level_button = "LS_LEVEL_BG_NORMAL_OPEN_4",
+        layout = "grid",
+        layout_params = {rows = 3, cols = 5},
+        levels = {
+          {
+            name = "LevelPack1_1",
+            free_to_play = true
+          },
+          {
+            name = "LevelPack1_2",
+          },
+          {
+            name = "LevelPack1_3",
+          },
+          {
+            name = "LevelPack1_4"
+          },
+          {
+            name = "LevelPack1_5"
+          },
+          {
+            name = "LevelPack1_6"
+          },
+          {
+            name = "LevelPack1_7"
+          },
+          {
+            name = "LevelPack1_8"
+          },
+          {
+            name = "LevelPack1_9"
+          },
+          {
+            name = "LevelPack1_10"
+          },
+          {
+            name = "LevelPack1_11"
+          },
+          {
+            name = "LevelPack1_12"
+          },
+          {
+            name = "LevelPack1_13"
+          },
+          {
+            name = "LevelPack1_14"
+          },
+          {
+            name = "LevelPack1_15"
+          }
+        }
+      }
+    }
+  },
   [15] = {
     season = 2013,
     icon = "ABOUT_BIRDS_1",
