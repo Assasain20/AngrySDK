@@ -1,3 +1,6 @@
+--the game doesn't save unless product and publisher are added for some reason, so I added them
+product = "Angry SDK"
+publisher = "Assasain_2.0"
 name = "Angry SDK"
 width = 100
 height = 200
