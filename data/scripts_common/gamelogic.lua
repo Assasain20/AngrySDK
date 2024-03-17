@@ -3859,7 +3859,7 @@ function revealGoldenEgg(name)
 end
 function loadLevelInternal(levelFileName)
   allyKilled = false
-  newSpriteSystem = {walls = {}, blocks = {}, hats = {}, grass = {}}
+  -- newSpriteSystem = {walls = {}, blocks = {}, hats = {}, grass = {}}
   g_tutorialActive = nil
   g_usingFreeEagle = false
   g_level_completing = false
@@ -4018,6 +4018,13 @@ function loadLevelInternal(levelFileName)
       objects.world[k] = nil
     end
   end
+  --[[ spriteSystem = {
+	walls = {},
+	wallsDeco = {},
+	blocks = {},
+	hats = {},
+	grass = {}
+  }]]
   birds = {}
   levelGoals = {}
   flyingGrenades = {}
@@ -4264,6 +4271,14 @@ function loadLevelInternal(levelFileName)
       levelGoals[k] = v
       setObjectParameter(k, 1, 1)
     end
+	-- if v.drawSprite then
+		-- if v.drawSprite.type == "walls" then
+			-- spriteSystem.walls[k] = v
+		-- elseif v.drawSprite.type == "grass" then
+			-- spriteSystem.grass[k] = v
+		-- end
+	-- end
+	-- Here sprite
     local sprites = getDamageSprite(v, blockTable.blocks)
     v.damageSprite = sprites.sprite
     v.blinkSprite = sprites.blink
@@ -4336,9 +4351,6 @@ function loadLevelInternal(levelFileName)
   _G.collectgarbage("collect")
   g_levelLoaded = true
   timeSinceLevelStart = 0
-  if shakingScreen == true then
-    drawRect(255, 30, 40, 0.9, -10000, 10000, 10000, -10000, true)
-  end  
 end
 function createObject(definitions, objectDefinition, objName, xpos, ypos)
   local name = ""
@@ -4494,7 +4506,7 @@ function createObject(definitions, objectDefinition, objName, xpos, ypos)
   if blockDef.type == "box" then
 	local extraScale = 1
 	if blockDef.drawSprite then
-		extraScale = blockDef.drawSprite.xScale
+		extraScale = _G.math.abs(blockDef.drawSprite.scale)
 	end
     if blockDef.width == nil or blockDef.height == nil then
       w, h = _G.res.getSpriteBounds("", sprite)
@@ -4521,7 +4533,7 @@ function createObject(definitions, objectDefinition, objName, xpos, ypos)
   if blockDef.type == "polygon" then
 	local extraScale = 1
 	if blockDef.drawSprite then
-		extraScale = blockDef.drawSprite.xScale
+		extraScale = _G.math.abs(blockDef.drawSprite.scale)
 	end
     if sprite ~= "" and sprite ~= nil then
       w, h = _G.res.getSpriteBounds("", sprite)
@@ -4559,7 +4571,7 @@ function createObject(definitions, objectDefinition, objName, xpos, ypos)
   if blockDef.type == "circle" then
 	local extraScale = 1
 	if blockDef.drawSprite then
-		extraScale = blockDef.drawSprite.xScale
+		extraScale = _G.math.abs(blockDef.drawSprite.scale)
 	end
     if blockDef.radius ~= nil then
       w = blockDef.radius
@@ -7012,7 +7024,31 @@ function drawGame()
 	g_rubber_g = slingshotInfo.rubberGreen or g_rubber_g
 	g_rubber_b = slingshotInfo.rubberBlue or g_rubber_b
   end
-  drawNewSpriteSystem()
+  -- if #spriteSystem.walls >= 1 then
+	-- for k, v in _G.pairs(spriteSystem.walls) do
+		-- drawNewSpriteSystemOld2(v)
+	-- end  
+  -- end
+  -- if #spriteSystem.grass >= 1 then
+	-- for k, v in _G.pairs(spriteSystem.grass) do
+		-- drawNewSpriteSystemOld2(v)
+	-- end 
+  -- end
+  -- drawNewSpriteSystem()
+	for k, v in _G.pairs(objects.world) do
+		if v.drawSprite then
+			if v.drawSprite.type == "walls" then
+			drawNewSpriteSystemV2(v)
+			end
+		end
+	end
+	for k, v in _G.pairs(objects.world) do
+		if v.drawSprite then
+			if v.drawSprite.type == "wallDeco" then
+			drawNewSpriteSystemV2(v)
+			end
+		end
+	end
   setRenderState(-screen.left - cameraShakeX - blockCameraShakeX, -screen.top - cameraShakeY - blockCameraShakeY, wScale, wScale, 0)
   _G.res.drawSprite(g_slingshot_back, lsx, lsy)
   local lsx1, lsy1 = lsx + 20, lsy
@@ -7026,6 +7062,13 @@ function drawGame()
   if selectedBird == nil then
     _G.res.drawSprite(g_slingshot_holder, rbx1, rby1)
   end
+  for k, v in _G.pairs(objects.world) do
+		if v.drawSprite then
+			if v.drawSprite.type == "blocks" then
+			drawNewSpriteSystemV2(v)
+			end
+		end
+	end
   drawIngameBubbles()  
   if not settingsWrapper:isGfxLowQuality() and g_levelParticlesEnabled then
     drawLevelParticlesNative(1)
@@ -7050,6 +7093,13 @@ function drawGame()
   end
   setRenderState(-screen.left - cameraShakeX - blockCameraShakeX, -screen.top - cameraShakeY - blockCameraShakeY, wScale, wScale, 0, 0, 0)
   _G.res.drawSprite(g_slingshot_front, lsx, lsy)
+  for k, v in _G.pairs(objects.world) do
+		if v.drawSprite then
+			if v.drawSprite.type == "hats" then
+			drawNewSpriteSystemV2(v)
+			end
+		end
+	end
   if useLevelLimits and cameraTargetObject ~= nil then
     local ct = cameraTargetObject
     if ct.y * physicsToWorld < screen.top then
@@ -7135,6 +7185,13 @@ function drawGame()
       end
     end
   end
+for k, v in _G.pairs(objects.world) do
+	if v.drawSprite then
+		if v.drawSprite.type == "grass" then
+			drawNewSpriteSystemV2(v)
+		end
+	end
+end
   setRenderState(0, 0, 1, 1, 0)
   oldZoomLevel = zoomLevel
   if objects.world.MightyEagle_a ~= nil then
@@ -7142,7 +7199,7 @@ function drawGame()
     if eagle.targetX > eagle.x then
       eagleDarkness = (100 - _G.math.min(_G.math.max(_G.math.abs(eagle.targetX - eagle.x), 0), 100)) / 200
     end
-  end
+  end  
   if eagleDarkness ~= nil then
     drawRect(0, 0, 0, eagleDarkness, 0, 0, screenWidth, screenHeight, false)
   end
@@ -7194,23 +7251,50 @@ function drawIngameBubbles()
     end
   end
 end
-function drawNewSpriteSystem()
+function drawNewSpriteSystemV2(v)
+	  local spriteInfo = v.drawSprite
+	  local spriteAngle
+	  local currentDamageSprite
+
+	  -- Checks if it has a fixed angle or not
+	  if spriteInfo.angleDegrees then
+		  spriteAngle = _G.math.rad(spriteInfo.angleDegrees)
+	  else
+		  spriteAngle = v.angle
+	  end
+
+	  --Checks if it has damageSprites, if it does, picks the current one for the currentSprite
+	  if blockTable.blocks[v.definition].damageSprites ~= nil and isPhysicsEnabled() then
+		  local percentage = getObjectPercentage(v)
+		  for key, value in _G.pairs(blockTable.blocks[v.definition].damageSprites) do
+		    if percentage > value.min and percentage <= value.max then
+		  	  currentDamageSprite = value.sprite
+		    end
+		  end
+	  end
+
+	  local currentSprite = currentDamageSprite or spriteInfo.sprite
+	  local xp, yp = _G.res.getSpritePivot("", currentSprite)
+	  
+	  setRenderState((spriteInfo.xOffCenter - cameraShakeX - blockCameraShakeX) * worldScale,
+					(spriteInfo.yOffCenter - cameraShakeY - blockCameraShakeY) * worldScale, 
+					spriteInfo.scale * worldScale,
+					spriteInfo.scale * worldScale,
+					spriteAngle,
+					xp, yp)
+					
+	  local drawX, drawY = physicsToScreenTransform(v.x, v.y)
+	  _G.res.drawSprite(currentSprite,
+						drawX/(worldScale*spriteInfo.scale),
+						drawY/(worldScale*spriteInfo.scale))
+					
+	  -- Makes sure the object doesn't have an sprite
+	  setSprite(v.name, "")
+end
+function drawNewSpriteSystemOld()
   for k, v in _G.pairs(objects.world) do
     if v.drawSprite then
-		
-		--quirky animation code
-		local scaleDirection = 1
-		if v.scaledt == nil then
-			v.scaledt = 0.2
-		end
-		if v.scaledt > 1 then
-		scaleDirection = -1
-		elseif v.scaledt == 0.2 then
-		scaleDirection = 1
-		end
-		v.scaledt = v.scaledt+1/60
-		
-		
+	
 	  local spriteInfo = v.drawSprite
 	  local spriteAngle
 	  local currentDamageSprite
@@ -7236,53 +7320,10 @@ function drawNewSpriteSystem()
 	  local xp, yp = _G.res.getSpritePivot("", currentSprite)
 
 	  setRenderState(spriteInfo.xOffCenter,	spriteInfo.yOffCenter, 
-					spriteInfo.xScale * worldScale * _G.math.cos(v.scaledt)--[[_G.math.tan(spriteAngle)]],
-					spriteInfo.yScale * worldScale --[[* _G.math.sin(v.scaledt)]]--[[_G.math.tan(spriteAngle)]],
+					spriteInfo.xScale * worldScale,
+					spriteInfo.yScale * worldScale,
 					spriteAngle,
---[[getObjectDefinition(k).drawSprite.f,
-getObjectDefinition(k).drawSprite.g)]]
-					xp --[[* _G.math.tan(spriteAngle)]], yp --[[* _G.math.tan(spriteAngle)]])
-					
-	  local drawX, drawY = physicsToScreenTransform(v.x, v.y)
-	  _G.res.drawSprite(currentSprite,
-						drawX/(worldScale*spriteInfo.xScale* _G.math.cos(v.scaledt)),
-						drawY/(worldScale*spriteInfo.yScale--[[* _G.math.sin(v.scaledt)]]))
-					
-	  -- Makes sure the object doesn't have an sprite
-	  setSprite(v.name, "")
-	  --setVelocity(v.name, 20, -10)
-	end --DONTDONTDONTDONT
-  end
-end
-function newSpriteFunction(v)
-  local spriteInfo = v.drawSprite
-	local spriteAngle
-	local currentSprite = spriteInfo.sprite
-	  
-	-- Checks if it has a fixed angle or not
-	if spriteInfo.angleDegrees then
-		spriteAngle = _G.math.rad(spriteInfo.angleDegrees)
-	else
-	  spriteAngle = v.angle
-	end
-	  
-	--Checks if it has damageSprites, if it does, picks the current one for the currentSprite
-	if blockTable.blocks[v.definition].damageSprites ~= nil and isPhysicsEnabled() then
-	  local percentage = getObjectPercentage(v)
-	  for key, value in _G.pairs(blockTable.blocks[v.definition].damageSprites) do
-	    if percentage > value.min and percentage <= value.max then
-	    	currentSprite = value.sprite
-	    end
-	  end
-	end
-	  local xp, yp = _G.res.getSpritePivot("", currentSprite)
-	  setRenderState(spriteInfo.xOffCenter,	spriteInfo.yOffCenter, 
-					spriteInfo.xScale * worldScale --[[_G.math.tan(spriteAngle)]],
-					spriteInfo.yScale * worldScale --[[_G.math.tan(spriteAngle)]],
-					spriteAngle,
-					--[[getObjectDefinition(k).drawSprite.f,
-					getObjectDefinition(k).drawSprite.g)]]
-					xp --[[* _G.math.tan(spriteAngle)]], yp --[[* _G.math.tan(spriteAngle)]])
+					xp, yp)
 					
 	  local drawX, drawY = physicsToScreenTransform(v.x, v.y)
 	  _G.res.drawSprite(currentSprite,
@@ -7291,7 +7332,48 @@ function newSpriteFunction(v)
 					
 	  -- Makes sure the object doesn't have an sprite
 	  setSprite(v.name, "")
-	  --setVelocity(v.name, 20, -10)
+	end
+  end
+end
+function drawNewSpriteSystem(v)
+
+	  local spriteInfo = v.drawSprite
+	  local spriteAngle
+	  local currentDamageSprite
+
+	  -- Checks if it has a fixed angle or not
+	  if spriteInfo.angleDegrees then
+		  spriteAngle = _G.math.rad(spriteInfo.angleDegrees)
+	  else
+		  spriteAngle = v.angle
+	  end
+
+	  --Checks if it has damageSprites, if it does, picks the current one for the currentSprite
+	  if blockTable.blocks[v.definition].damageSprites ~= nil and isPhysicsEnabled() then
+		  local percentage = getObjectPercentage(v)
+		  for key, value in _G.pairs(blockTable.blocks[v.definition].damageSprites) do
+		    if percentage > value.min and percentage <= value.max then
+		  	  currentDamageSprite = value.sprite
+		    end
+		  end
+	  end
+
+	  local currentSprite = currentDamageSprite or spriteInfo.sprite
+	  local xp, yp = _G.res.getSpritePivot("", currentSprite)
+
+	  setRenderState(spriteInfo.xOffCenter,	spriteInfo.yOffCenter, 
+					spriteInfo.xScale * worldScale,
+					spriteInfo.yScale * worldScale,
+					spriteAngle,
+					xp, yp)
+					
+	  local drawX, drawY = physicsToScreenTransform(v.x, v.y)
+	  _G.res.drawSprite(currentSprite,
+						drawX/(worldScale*spriteInfo.xScale),
+						drawY/(worldScale*spriteInfo.yScale))
+					
+	  -- Makes sure the object doesn't have an sprite
+	  setSprite(v.name, "")
 end
 function shootRocket(object)
   local obj = objects.world[object]

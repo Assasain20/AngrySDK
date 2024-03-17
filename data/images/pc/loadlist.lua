@@ -93,50 +93,25 @@ r0_0.pc = {
 	--Custom stuff starts here
 	{"NotVanilla/Blocks/ABSpace/INGAME_COMMON_COMMON_BLOCKS.dat",0},
 	{"NotVanilla/Blocks/ABSpace/INGAME_TRANSITION_SCREEN_1.dat",0},
-	{
-	  "NotVanilla/Blocks/ABClassic/INGAME_THEME_STATIC_BLOCKS.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABClassic/INGAME_PIGS_NEW_SHEET_0.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABClassic/INGAME_PIGS_NEW_SHEET_1.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/Themes/ABClassic/INGAME_THEME_MISSING_TEXTURE.dat",
-	  0
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT1.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT2.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT3.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT4.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT5.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT7.dat",
-	  0	
-	},
-	{
-	  "NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT8.dat",
-	  0	
-	}
+	{"NotVanilla/Blocks/ABClassic/INGAME_THEME_STATIC_BLOCKS.dat",0},
+	{"NotVanilla/GameStyle/ABClassic/INGAME_PIGS_NEW_SHEET_0.dat",0},
+	{"NotVanilla/GameStyle/ABClassic/INGAME_PIGS_NEW_SHEET_1.dat",0},
+	{"NotVanilla/Themes/ABClassic/INGAME_THEME_MISSING_TEXTURE.dat",0},
+	-- Slingshots
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT1.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT2.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT3.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT4.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT5.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT7.dat",0},
+	{"NotVanilla/GameStyle/ABFriends/INGAME_INGAME_SLINGSHOT8.dat",0},
+	-- Testing
+	{"NotVanilla/Testing/INGAME_EGGFILES_NBA.dat", 0},
+	{"NotVanilla/Testing/INGAME_GRASS_C.dat", 0},
+	{"NotVanilla/Testing/INGAME_THEME_WALLS.dat", 0},
+	{"NotVanilla/Testing/THEME_20_THEME_20_GROUND_2.dat", 0},
+	{"NotVanilla/Testing/THEME_FB_2_THEME_FB_2_GROUND_2.dat", 0},
+	{"NotVanilla/Testing/UI_EVENT_HALLOWEEN_2017_UI_HALLOWEEN_2017.dat", 0}
   },
   INGAME_SCORES = {
     {

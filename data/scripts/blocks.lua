@@ -9902,17 +9902,7 @@ blocks = {
   SkeletonBody_1 = {
     type = "box",
     width = 1,
-    height = 2,	
-	drawSprite = {
-		xOffCenter = 0, -- x off center -- related to the x scale
-		yOffCenter = 0, -- y off center -- pos goes down -- also related to the x scale
-		xScale = 3, -- x scale
-		yScale = 3, -- y scale
-		--angleDegrees = 0,
-		f = 0, -- no idea rn
-		g = 0, -- no idea rn
-		sprite = "SKELETON_BODY_1"
-	},
+    height = 2,
     sprite = "SKELETON_BODY_1",
     controllable = false,
     materialName = "skeleton",
@@ -11366,7 +11356,7 @@ blocks = {
 			x = {20, 20},
 			y = {20, 20}
 		},]]
-		destroySpeed = 3,
+		--destroySpeed = 3,
 		radius = {0, 10},
 		--gravity = {x = 2, y = 0},
 		allow = {
@@ -11375,26 +11365,39 @@ blocks = {
 			blocks = true
 		}
 	},
-	rotation = {
-		startASAP = false,
-		speed = 0.5,
-	},
+	-- rotation = {
+		-- startASAP = false,
+		-- speed = 0.5,
+	-- },
 	specialBlock = true,
 	drawSprite = {
+		scale = -0.5,
+		type = "hats",
 		xOffCenter = 0, -- x off center -- related to the x scale
 		yOffCenter = 0, -- y off center -- pos goes down -- also related to the x scale
-		xScale = 1, -- x scale
-		yScale = 0.5, -- y scale
+		--xScale = 2, -- x scale
+		--yScale = 2, -- y scale
 		f = 999, -- no idea rn -- omfg i hate them
 		g = 0, -- no idea rn -- i hate u too
 		sprite = "ASTEROID_ROCK_BIG_1",
 		z_order = 5,
-	},
-    materialName = "immovable",
+	},		
+	-- drawSprite = {
+		-- type = "grass",
+		-- xOffCenter = 0, -- x off center -- related to the x scale
+		-- yOffCenter = 0, -- y off center -- pos goes down -- also related to the x scale
+		-- xScale = 3, -- x scale
+		-- yScale = 3, -- y scale
+		-- --angleDegrees = 0,
+		-- f = 0, -- no idea rn
+		-- g = 0, -- no idea rn
+		-- sprite = "SKELETON_BODY_1"
+	-- },
+    materialName = "piglette",
     group = "testBlocks",
 	density = 1,
-	defence = 2000,
-	strength = 100000000,
+	defence = 10,
+	strength = 1000,
     groupIndex = 1
   },
   TestRectangularGravityField = {
@@ -11500,6 +11503,26 @@ blocks = {
     particles = "smokeBuff",
     group = "testBlocks",
     groupIndex = 5
+  },
+  FriendsDirt = {
+    type = "box",
+    sprite = "THEME_FB_DEFAULT_2016_GROUND2",
+    controllable = false,
+    materialName = "immovable",
+    group = "platforms",
+    groupIndex = 999,
+	drawSprite = {
+		type = "hats",
+		scale = 0.5,
+		xOffCenter = 0, -- x off center -- related to the x scale
+		yOffCenter = 0, -- y off center -- pos goes down -- also related to the x scale
+		--xScale = 2, -- x scale
+		--yScale = 2, -- y scale
+		f = 999, -- no idea rn -- omfg i hate them
+		g = 0, -- no idea rn -- i hate u too
+		sprite = "THEME_FB_DEFAULT_2016_GROUND2",
+	},	
+	collision = false
   },
 }
 filename = "blocks.lua"
